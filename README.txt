@@ -1,4 +1,4 @@
-Facebook on Terminal
+Facebook on Terminal (http://decached.com/fbterminal)
 ---
 Access Facebook on Terminal
 
@@ -9,28 +9,28 @@ Access Facebook on Terminal
 
 Requirements
 ---
-1. Python 2.7 -> http://www.python.org/download/releases/2.7.3/
-2. PyCurl -> http://pycurl.sourceforge.net/ $ pip install pycurl
+1. Python 2.7 -> http://www.python.org/download/releases/2.7.3
+2. PIP -> http://pypi.python.org/pypi/pip $ apt-get install python-pip
+3. PyCurl -> http://pycurl.sourceforge.net $ pip install pycurl
 
 Installation
 ---
 1. Fast Forward
 	$ pip install fbterminal
+
 OR
 
 1. Clone the Repository 
 	$ git clone git@github.com:iAkashz/fbterminal.git
+	$ python setup.py install
 
 2. Go to Facebook Developers -> https://developers.facebook.com/apps/ and create a new app
 
-3. Copy the file /usr/local/lib/python2.7/dist-packages/fbterminal/.fbterminal to ~/ i.e /home/<username>/ dir 
-Copy the APP ID and APP SECRET to ~/.fbterminal
+3. Copy the APP ID and APP SECRET to ~/.fbterminal
 
 Running
 ---
-If installed 
-	1. Through pip $ fbterminal
-	2. From source $ python terminal.py
+$ fbterminal -p 'Hello World'
 
 Copyright and Licence
 ---
