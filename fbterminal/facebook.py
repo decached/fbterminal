@@ -4,6 +4,7 @@ import cStringIO
 import json
 from ConfigParser import ConfigParser
 from urllib import urlencode
+import sys
 
 
 class Facebook:
@@ -18,6 +19,8 @@ class Facebook:
         config.read('/home/' + getpass.getuser() +'/.fbterminal')
         self.app_id = config.get('app_details', 'APP_ID')
         self.app_secret = config.get('app_details', 'APP_SECRET')
+        if self.app_id == "YOUR_APP_ID" or self.app_secret == "YOUR_APP_SECRET":
+            sys.exit("Please create a new Facebook app (https://developers.facebook.com/apps/) and enter your APP_ID and APP_SECRET in ~/.fbterminal file")
         self.access_token = config.get('access_token', 'access_token')
         if not self.valid_access_token():
             self.authorize()
