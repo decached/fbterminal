@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>decached.com ~ Facebook on Terminal</title>
+    <meta name="description" content="Access Facebook on Terminal">
+    <meta name="keywords" content="Akash, Kothawale, decached.com, iAkashz, Facebook, Terminal, Programmer, Musician">
+    <meta name="author" content="Akash Kothawale">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <div id="header">
+        <nav>
+          <li class="fork"><a
+            href="https://github.com/iakashz/fbterminal">Fork On GitHub</a></li>
+          <li class="downloads">
+            <a href="https://github.com/iakashz/fbterminal/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Facebook on Terminal</h1>
+          <hr>
+          <span class="credits left">Repo maintained by <a
+              href="http://decached.com">Akash</a> &mdash;
+          Contact <a
+            href="mailto:io@decached.com">io@decached.com</a> &mdash; 
+          Hosted on <a href="http://pages.github.com/">GitHub Pages</a> &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>
+        <h2>Access Facebook on Terminal</h2>
+          <br/>
+          <ol>
+            <li> Check Notifications</li>
+            <li> Check who is online</li>
+            <li> Post a status</li>
+            <li> And more...(Coming soon)</li>
+          </ol>
+        </p> 
+
+        <p>
+        <h2>Requirements</h2>
+          <ul>
+            <li><a href='http://www.python.org/download/releases/2.7.3/'>Python 2.7.3</a><pre><code>$ apt-get install python</code></pre></li>
+            <li><a href='http://pypi.python.org/pypi/pip'>Python PIP</a><pre><code>$ apt-get install python-pip</code></pre></li>
+            <li><a href='http://pycurl.sourceforge.net/'>PyCurl</a><pre><code>$ pip install pycurl</code></pre></li>
+          </ul>
+        </p>
+        
+        <p>
+        <h2>Installation</h2>
+
+        <ul>
+          <li>Fast forward
+            <pre><code>$ pip install fbterminal</code></pre>
+          </li>
+          <li>Installing from source
+            <pre><code>$ git clone git@github.com:iAkashz/fbterminal.git<br/>$ python setup.py install</code></pre>
+          </li>
+
+
+          <li>Go to <a href="https://developers.facebook.com/apps/">Facebook Developers</a> and create a new app
+          <br/>
+          Copy the APP ID and APP SECRET to file ~/.fbterminal</li>
+        </ul>
+        </p>
+
+        <p>
+        <h2>Running</h2>
+        <pre><code>$ fbterminal -p 'Hello World'</code></pre>
+        </p>
+        <p>
+        <h2>Licence</h2>
+        Under <a href="https://github.com/iAkashz/fbterminal/blob/master/LICENCE">MIT Licence</a> 
+        <br/>
+        Copyright &copy; 2013 | Akash Kothawale
+        </p>
+        <hr>
+
+      </section>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
