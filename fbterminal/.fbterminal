@@ -1,0 +1,7 @@
+[app_details]
+app_id = YOUR_APP_ID
+app_secret = YOUR_APP_SECRET
+
+[access_token]
+access_token = THIS_WILL_CHANGE_AUTOMATICALLY
+
