@@ -21,7 +21,7 @@ class httpServHandler (BaseHTTPServer.BaseHTTPRequestHandler):
                 self.send_response(200)
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
-                self.wfile.write("")
+                self.wfile.write("Success! You may close this tab.")
                 global code
                 code = params['code']
                 return
@@ -50,17 +50,16 @@ class Facebook:
         self.access_token = config.get('access_token', 'access_token')
         if not self.valid_access_token():
             self.authorize()
+        config.read('/home/' + getpass.getuser() + '/.fbterminal')
         self.access_token = config.get('access_token', 'access_token')
 
     def authorize(self):
         dialog_url = "https://www.facebook.com/dialog/oauth"
-        fields = "client_id=" + self.app_id + "&redirect_uri=" + self.app_url
+        fields = urlencode({"client_id": self.app_id, "redirect_uri": self.app_url, "scope": self.permissions})
         webbrowser.open(dialog_url + "?" + fields)
         serv = BaseHTTPServer.HTTPServer(('localhost', 7777), httpServHandler)
-        serv._handle_request_noblock()
+        serv.handle_request()
         code_url = "https://graph.facebook.com/oauth/access_token"
-        while code == '':
-            pass
         fields = "client_id=" + self.app_id + "&redirect_uri=" + self.app_url + "&client_secret=" + self.app_secret + "&code=" + code
         buf = cStringIO.StringIO()
         req = pycurl.Curl()
