@@ -21,7 +21,7 @@ Installation
 OR
 
 1. Clone the Repository 
-	$ git clone git@github.com:iAkashz/fbterminal.git
+	$ git clone git://github.com/decached/fbterminal.git
 	$ python setup.py install
 
 2. Go to Facebook Developers -> https://developers.facebook.com/apps/ and create a new app
