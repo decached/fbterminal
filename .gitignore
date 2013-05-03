@@ -1,0 +1,6 @@
+*.swp
+*.log
+*.pyc
+build/
+dist/
+fbterminal.egg-info/
