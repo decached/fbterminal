@@ -3,7 +3,7 @@ import os
 import subprocess
 setup(
     name='fbterminal',
-    version='0.1',
+    version='0.1.1',
     packages=['fbterminal'],
     license='MIT',
     author='Akash Kothawale',
