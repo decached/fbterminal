@@ -11,19 +11,19 @@ Access Facebook on Terminal
 Requirements
 ---
 - Python 2.7 > http://www.python.org/download/releases/2.7.3
-- PIP > http://pypi.python.org/pypi/pip $ apt-get install python-pip
-- PyCurl > http://pycurl.sourceforge.net $ pip install pycurl
+- PIP > http://pypi.python.org/pypi/pip `$ apt-get install python-pip`
+- PyCurl > http://pycurl.sourceforge.net `$ pip install pycurl`
 
 Installation
 ---
 1. Fast Forward  
-    `$ pip install fbterminal`
+	`$ pip install fbterminal`
 
 OR
 
-1. Clone the Repository  
-	`$ git clone git://github.com/decached/fbterminal.git`  
-    `$ python setup.py install`
+1. Clone the Repository
+	- `$ git clone git://github.com/decached/fbterminal.git`
+	- `$ python setup.py install`
 
 2. Go to Facebook Developers -> https://developers.facebook.com/apps/ and create a new app
 
@@ -35,5 +35,6 @@ Running
 
 Copyright and Licence
 ---
-Released under MIT Licence  
-Copyright (c) 2013 Akash Kothawale -> http://decached.com
+Released under MIT Licence
+
+Copyright (c) 2013 [Akash Kothawale](http://decached.com)
