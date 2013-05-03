@@ -37,7 +37,7 @@ class Facebook:
     app_id = ""
     app_secret = ""
     app_url = "http://localhost:7777/"
-    permissions = "friends_online_presence, manage_notifications, publish_stream"
+    permissions = "friends_online_presence, manage_notifications, publish_stream, read_mailbox"
     access_token = ""
 
     def __init__(self):
