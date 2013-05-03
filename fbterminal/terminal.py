@@ -6,6 +6,30 @@ import pycurl
 import cStringIO
 
 
+def custom_FQL(fb, query):
+    response = fb.fqlQuery(query)
+    if 'data' in response:
+        attributes = map(lambda x: x.replace(" ", ""), query.split('from')[0].split('select')[1].split(','))
+        print ''
+        for record in response['data']:
+            for attribute in attributes:
+                print record[attribute], '\t ',
+            print ""
+    elif 'error' in response:
+        print "\nFQL Error: ", response['error']['message']
+
+
+def show_unread_messages(fb):
+    query = 'SELECT sender,body,timestamp FROM unified_message WHERE thread_id IN (SELECT thread_id FROM unified_thread WHERE has_tags("inbox") AND unread=1) AND unread!=0 ORDER BY timestamp DESC'
+    response = fb.fqlQuery(query)
+    if 'data' in response and response['data'] != []:
+        print "\nUnread Messages \n\n[Name]: Message\n"
+        for friend in response['data']:
+            print "[%s]: %s" % (friend['sender']['name'], friend['body'])
+    else:
+        print "\nNo unread messages"
+
+
 def show_friends_online(fb):
     query = 'SELECT online_presence,name FROM user WHERE online_presence in ("active","idle") AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) ORDER BY online_presence'
     response = fb.fqlQuery(query)
@@ -54,21 +78,27 @@ def post_on_wall(fb, post):
 
 def terminal(args):
     fb = Facebook()
-    if args['post']:
-        post_on_wall(fb, args['post'])
-    if args['spy_friend']:
-        show_friend_online_status(fb, args['spy_friend'])
-    if args['online']:
-        show_friends_online(fb)
+    if args['messages']:
+        show_unread_messages(fb)
     if args['notifications']:
         show_notifications(fb)
+    if args['online']:
+        show_friends_online(fb)
+    if args['post']:
+        post_on_wall(fb, args['post'])
+    if args['query']:
+        custom_FQL(fb, args['query'].lower())
+    if args['spy_friend']:
+        show_friend_online_status(fb, args['spy_friend'])
 
 
 def command_line_runner():
     parser = argparse.ArgumentParser(description='Access Facebook on Terminal')
+    parser.add_argument('-m', '--messages', help='Show unread messages', action='store_true')
     parser.add_argument('-n', '--notifications', help='Show notifications', action='store_true')
     parser.add_argument('-o', '--online', help='Show friends who are online', action='store_true')
     parser.add_argument('-p', '--post', help='Post on your wall', type=str)
+    parser.add_argument('-q', '--query', help='Execute custom FQL')
     parser.add_argument('-s', '--spy-friend', help='Show if a particular friend is online')
     if len(sys.argv) == 1:
         print parser.print_usage()
