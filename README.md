@@ -1,5 +1,6 @@
 Facebook on Terminal
 ===
+[![Build Status](https://travis-ci.org/decached/fbterminal.png?branch=master)](https://travis-ci.org/decached/fbterminal)
 
 Access Facebook on Terminal
 
