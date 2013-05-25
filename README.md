@@ -1,6 +1,6 @@
 Facebook on Terminal
 ===
-[![Pypi Version](https://pypip.in/v/fbterminal/badge.png)](https://crate.io/package/fbterminal) [![Downloads](https://pypip.in/d/fbterminal/badge.png)](https://crate.io/package/fbterminal) [![Build Status](https://travis-ci.org/decached/fbterminal.png?branch=master)](https://travis-ci.org/decached/fbterminal)
+[![Pypi Version](https://pypip.in/v/fbterminal/badge.png)](https://crate.io/packages/fbterminal) [![Downloads](https://pypip.in/d/fbterminal/badge.png)](https://crate.io/packages/fbterminal) [![Build Status](https://travis-ci.org/decached/fbterminal.png?branch=master)](https://travis-ci.org/decached/fbterminal)
 
 Access Facebook on Terminal
 
