@@ -1,2 +1,2 @@
-include CHANGES.txt README.txt LICENCE
+include CHANGES.txt README.md LICENCE
 recursive-include fbterminal *.py .fbterminal
