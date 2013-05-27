@@ -68,7 +68,7 @@ class Facebook:
         fields = urlencode({'client_id': self.app_id, 'redirect_uri': self.app_url, 'scope': self.permissions})
         webbrowser.open(dialog_url + '?' + fields)
 
-        serv = http.server.HTTPServer(('localhost', 7777), httpServHandler)
+        serv = Httpserv.HTTPServer(('localhost', 7777), httpServHandler)
         serv.handle_request()
 
         code_url = 'https://graph.facebook.com/oauth/access_token'

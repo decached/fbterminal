@@ -1,1 +1,1 @@
-pycurl>=7.19.0
+requests>=1.2.3
