@@ -1,20 +1,27 @@
 import getpass
 import json
-from ConfigParser import ConfigParser
-from urllib import urlencode
 import sys
-import BaseHTTPServer
-import urlparse
 import webbrowser
 import requests
+
+if sys.version < '3':
+    from urlparse import urlparse
+    import BaseHTTPServer as Httpserv
+    from urllib import urlencode
+    from ConfigParser import ConfigParser
+else:
+    from urllib.parse import urlencode
+    import http.server as Httpserv
+    from configparser import ConfigParser
+    from urllib.parse import urlparse
 
 code = ''
 
 
-class httpServHandler (BaseHTTPServer.BaseHTTPRequestHandler):
+class httpServHandler (Httpserv.BaseHTTPRequestHandler):
     def do_GET(self):
         if not self.path.find('?') == -1:
-            parsed_path = urlparse.urlparse(self.path)
+            parsed_path = urlparse(self.path)
             try:
                 params = dict([p.split('=') for p in parsed_path[4].split('&')])
                 self.send_response(200)
@@ -61,7 +68,7 @@ class Facebook:
         fields = urlencode({'client_id': self.app_id, 'redirect_uri': self.app_url, 'scope': self.permissions})
         webbrowser.open(dialog_url + '?' + fields)
 
-        serv = BaseHTTPServer.HTTPServer(('localhost', 7777), httpServHandler)
+        serv = http.server.HTTPServer(('localhost', 7777), httpServHandler)
         serv.handle_request()
 
         code_url = 'https://graph.facebook.com/oauth/access_token'

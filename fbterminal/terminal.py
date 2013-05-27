@@ -8,36 +8,36 @@ import requests
 def custom_FQL(fb, query):
     response = fb.fqlQuery(query)
     if 'data' in response:
-        attributes = map(lambda x: x.replace(' ', ''), query.split('from')[0].split('select')[1].split(','))
-        print ''
+        attributes = [x.replace(' ', '') for x in query.split('from')[0].split('select')[1].split(',')]
+        print('')
         for record in response['data']:
             for attribute in attributes:
-                print record[attribute], '\t ',
-            print ''
+                print(record[attribute], '\t ')
+            print('')
     elif 'error' in response:
-        print '\nFQL Error: ', response['error']['message']
+        print('\nFQL Error: ', response['error']['message'])
 
 
 def show_unread_messages(fb):
     query = 'SELECT sender,body,timestamp FROM unified_message WHERE thread_id IN (SELECT thread_id FROM unified_thread WHERE has_tags("inbox") AND unread=1) AND unread!=0 ORDER BY timestamp DESC'
     response = fb.fqlQuery(query)
     if 'data' in response and response['data'] != []:
-        print '\nUnread Messages \n\n[Name]: Message\n'
+        print('\nUnread Messages \n\n[Name]: Message\n')
         for friend in response['data']:
-            print '[%s]: %s' % (friend['sender']['name'], friend['body'])
+            print('[%s]: %s' % (friend['sender']['name'], friend['body']))
     else:
-        print '\nNo unread messages'
+        print('\nNo unread messages')
 
 
 def show_friends_online(fb):
     query = 'SELECT online_presence,name FROM user WHERE online_presence in ("active","idle") AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) ORDER BY online_presence'
     response = fb.fqlQuery(query)
     if 'data' in response:
-        print '\nFriends Online \nStatus \t Name\t'
+        print('\nFriends Online \nStatus \t Name\t')
         for friend in response['data']:
-            print '%5s \t %s' % (friend['online_presence'], friend['name'])
+            print('%5s \t %s' % (friend['online_presence'], friend['name']))
     else:
-        print '\nNo one online'
+        print('\nNo one online')
 
 
 def show_notifications(fb):
@@ -45,29 +45,29 @@ def show_notifications(fb):
     response = fb.fqlQuery(query)
     if 'data' in response:
         if len(response['data']):
-            print '\nNotifications'
+            print('\nNotifications')
             for notif in response['data']:
-                print notif['title_text'], notif['body_text'], notif['href']
+                print(notif['title_text'], notif['body_text'], notif['href'])
         else:
-            print '\nNo Notifications!'
+            print('\nNo Notifications!')
 
 
 def show_friend_online_status(fb, friend):
     query = 'SELECT online_presence, name FROM user WHERE online_presence in ("active","idle") AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me()) ORDER BY online_presence'
     response = fb.fqlQuery(query)
     if 'data' in response:
-        print '\n' + friend + ' is',
+        print('\n' + friend + ' is')
         try:
             [element for element in response['data'] if element['name'].lower() == friend.lower()][0]['online_presence']
-            print 'ONLINE'
+            print('ONLINE')
         except:
-            print 'offline'
+            print('offline')
 
 
 def post_on_wall(fb, post):
     fields = {'access_token': fb.access_token, 'message': post}
     req = requests.post('https://graph.facebook.com/me/feed', params=fields)
-    print 'Status Updated -> https://facebook.com/' + req.text.split('\"')[3]
+    print('Status Updated -> https://facebook.com/' + req.text.split('\"')[3])
 
 
 def terminal(args):
@@ -92,10 +92,10 @@ def command_line_runner():
     parser.add_argument('-n', '--notifications', help='Show notifications', action='store_true')
     parser.add_argument('-o', '--online', help='Show friends who are online', action='store_true')
     parser.add_argument('-p', '--post', help='Post on your wall', type=str)
-    parser.add_argument('-q', '--query', help='Execute custom FQL')
-    parser.add_argument('-s', '--spy-friend', help='Show if a particular friend is online')
+    parser.add_argument('-q', '--query', help='Execute custom FQL', type=str)
+    parser.add_argument('-s', '--spy-friend', help='Show if a particular friend is online', type=str)
     if len(sys.argv) == 1:
-        print parser.print_usage()
+        print(parser.print_usage())
         sys.exit('fbterminal: error: too few arguments')
     args = vars(parser.parse_args())
     terminal(args)
