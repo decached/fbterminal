@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-from facebook import Facebook
+try:
+    from . import facebook
+except ImportError:
+    import facebook
 import argparse
 import sys
 import requests
@@ -71,7 +74,7 @@ def post_on_wall(fb, post):
 
 
 def terminal(args):
-    fb = Facebook()
+    fb = facebook.Facebook()
     if args['messages']:
         show_unread_messages(fb)
     if args['notifications']:
