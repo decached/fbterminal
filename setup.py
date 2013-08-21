@@ -11,7 +11,7 @@ setup(
     url='http://decached.com/fbterminal',
     install_requires='requests>=1.2.3',
     entry_points={'console_scripts': ['fbterminal = fbterminal.terminal:command_line_runner']},
-    data_files=[('/home/' + os.getlogin() + '/', ['fbterminal/.fbterminal'])]
+    data_files=[(os.path.expanduser('~') + '/', ['fbterminal/.fbterminal'])]
 )
 
 os.system('chown ' + os.getlogin() + ' ~/.fbterminal')
