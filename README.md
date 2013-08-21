@@ -32,6 +32,11 @@ OR
 
 Running
 ---
+Check online friends:
+`$ fbterminal -o`
+
+
+Post message:
 `$ fbterminal -p 'Hello World'`
 
 Copyright and Licence
