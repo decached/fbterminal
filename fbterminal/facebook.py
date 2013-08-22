@@ -3,6 +3,7 @@ import json
 import sys
 import webbrowser
 import requests
+import os
 
 if sys.version < '3':
     from urlparse import urlparse
@@ -47,8 +48,9 @@ class Facebook:
     access_token = ''
 
     def __init__(self):
+        self.config_file_path = os.path.expanduser('~/.fbterminal')
         config = ConfigParser()
-        config.read('/home/' + getpass.getuser() + '/.fbterminal')
+        config.read(self.config_file_path)
 
         self.app_id = config.get('app_details', 'APP_ID')
         self.app_secret = config.get('app_details', 'APP_SECRET')
@@ -59,7 +61,7 @@ class Facebook:
 
         if not self.valid_access_token():
             self.authorize()
-        config.read('/home/' + getpass.getuser() + '/.fbterminal')
+        config.read(self.config_file_path)
 
         self.access_token = config.get('access_token', 'access_token')
 
@@ -76,9 +78,9 @@ class Facebook:
         req = requests.get(code_url, params=fields)
 
         config = ConfigParser()
-        config.read('/home/' + getpass.getuser() + '/.fbterminal')
+        config.read(self.config_file_path)
         config.set('access_token', 'access_token', req.text.split('&')[0].split('=')[1])
-        config.write(open('/home/' + getpass.getuser() + '/.fbterminal', 'w+'))
+        config.write(open(self.config_file_path, 'w+'))
 
     def fqlQuery(self, query):
         fql_url = 'https://graph.facebook.com/fql'
