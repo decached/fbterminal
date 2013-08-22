@@ -7,13 +7,14 @@ Access Facebook on Terminal
 - Check Notifications, Messages
 - Check who's online
 - Post a status
+- Fire a custom FQL query (for the geeks)
 - And More... (Coming Soon)
 
 Requirements
 ---
-- [Python 2.7](http://www.python.org/download/releases/2.7.3)
-- [PIP](http://pypi.python.org/pypi/pip) `$ apt-get install python-pip`
-- [PyCurl](http://pycurl.sourceforge.net) `$ pip install pycurl`
+- [Python 2.7/3.3]
+- [Pip](http://pypi.python.org/pypi/pip) `$ apt-get install python-pip`
+- [Requests](http://docs.python-requests.org/en/latest/) `$ pip install requests`
 
 Installation
 ---
@@ -32,14 +33,14 @@ OR
 
 Running
 ---
-Check online friends:
-`$ fbterminal -o`
+- Check online friends:
+    `$ fbterminal -o`
 
-
-Post message:
-`$ fbterminal -p 'Hello World'`
+- Post message:
+    `$ fbterminal -p 'Hello World'`
 
 Copyright and Licence
 ---
+
 Released under MIT Licence  
-Copyright (c) 2013 Akash Kothawale -> http://decached.com
+Copyright (c) 2013 Akash Kothawale → http://decached.com

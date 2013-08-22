@@ -9,6 +9,13 @@ import requests
 
 
 def custom_FQL(fb, query):
+    """
+    Fire custom FQL queries from your terminal
+
+    parameters
+    - fb (fbterminal object)
+    - query - (string)
+    """
     response = fb.fqlQuery(query)
     if 'data' in response:
         attributes = [x.replace(' ', '') for x in query.split('from')[0].split('select')[1].split(',')]
