@@ -44,3 +44,7 @@ Copyright and Licence
 
 Released under MIT Licence  
 Copyright (c) 2013 Akash Kothawale → http://decached.com
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/decached/fbterminal/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
