@@ -18,18 +18,8 @@ Requirements
 
 Installation
 ---
-1. Fast Forward  
-    `$ pip install fbterminal`
 
-OR
-
-1. Clone the Repository  
-	`$ git clone git://github.com/decached/fbterminal.git`  
-    `$ python setup.py install`
-
-2. Go to Facebook Developers -> https://developers.facebook.com/apps/ and create a new app
-
-3. Copy the APP ID and APP SECRET to ~/.fbterminal
+Follow [these steps](http://decached.com/writings/fbterminal/).
 
 Running
 ---
